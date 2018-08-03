@@ -13,6 +13,7 @@ For maven test.
 * maven 常见的maven命令
 * maven 打包插件
 * maven 设置代理镜像仓库 (官方 https://mvnrepository.com/)
+* maven profile 插件的管理
 * maven 私有仓库的安装
 
 ### Demos

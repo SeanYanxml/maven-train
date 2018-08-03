@@ -11,13 +11,14 @@
 
 	<groupId>com.yanxml</groupId>
 	<artifactId>maven-train-springboot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>maven-train-springboot</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<springboot.version>1.5.13.RELEASE</springboot.version>
+		<springboot.startclass>com.yanxml.maven.train.springboot.Application</springboot.startclass>
 	</properties>
 
 	<dependencies>
@@ -39,6 +40,12 @@
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 			<version>${springboot.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.7</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -50,6 +57,36 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>${start-class}</mainClass>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<finalName>${package}-${package.version}</finalName>
+					<ignorePermissions>true</ignorePermissions>
+					<appendAssemblyId>false</appendAssemblyId>
+					
+					<descriptors>
+						<descriptor>src/main/assembly/${package.format}-assembly.xml</descriptor>
+					</descriptors>
+				
 				</configuration>
 			</plugin>
 		</plugins>
