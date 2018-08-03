@@ -1,0 +1,123 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.yanxml</groupId>
+		<artifactId>maven-train</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>maven-train-jenkins</artifactId>
+	<packaging>war</packaging>
+
+	<!-- dependencies -->
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+	
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<webResources>
+						<resource>
+							<directory>src/main/resources/static</directory>
+							<targetPath>WEB-INF/classes</targetPath>
+							<filtering>true</filtering>
+						</resource>
+					</webResources>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+
+			</plugin>
+
+			<!-- to generate excutable jar/war with springboot style begin -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>${start-class}</mainClass>
+				</configuration>
+			</plugin>
+			<!-- to generate excutable jar/war with springboot style end -->
+
+
+
+			<!-- to generate compressed package（tar package） specified by package.xml 
+				begin -->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<finalName>${package}-${package.version}</finalName>
+					<ignorePermissions>true</ignorePermissions>
+					<appendAssemblyId>false</appendAssemblyId>
+					<descriptors>
+						<descriptor>${basedir}/scripts/common/package.xml</descriptor>
+					</descriptors>
+				</configuration>
+			</plugin>
+			<!-- to generate compressed package specified by package.xml end -->
+
+			<!-- resource插件, 设定编码，防止中文乱码 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			
+			<!-- for mvn docker : build & pull -->
+			<plugin>
+				<groupId>com.spotify</groupId>
+    			<artifactId>docker-maven-plugin</artifactId>
+    			<version>0.4.10</version>
+    			<configuration>
+    				<imageName>girlservice</imageName>
+    				<dockerDirectory>src/main/docker</dockerDirectory>
+    				<!-- <serverId>docker-registry</serverId>
+    				<registryUrl>http://10.186.25.87</registryUrl>
+    				<exposes>5000</exposes> -->
+    				<resources>
+    					<resource>
+    						<targetPath>/target</targetPath>
+    						<directory>/Users/Sean/Documents/Gitrep/maven-train/maven-train-jenkins/target/</directory>
+    					</resource>
+    					<!-- <resource>
+    						<targetPath>/</targetPath>
+    						<directory>${project.build.directory}</directory>
+    						<include>${project.build.finalName}.war</include>
+    					</resource> -->
+    				</resources>
+    			</configuration>
+			</plugin>
+			
+		</plugins>
+	</build>
+
+
+</project>

@@ -1,0 +1,61 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 
+  http://maven.apache.org/xsd/assembly-1.1.3.xsd">
+  
+    <id>0.1</id>
+    <formats>
+        <format>tar</format>
+    </formats>
+      
+    <fileSets>
+    	<!-- docker scripts -->
+        <fileSet>
+            <directory>scripts/common/</directory>
+            <outputDirectory>/scripts</outputDirectory>
+            <fileMode>0755</fileMode>
+        </fileSet>
+        
+        <fileSet>
+            <directory>scripts/docker/</directory>
+            <outputDirectory>/scripts</outputDirectory>
+            <fileMode>0755</fileMode>
+            <includes>
+              <include>docker-test.sh</include>
+            </includes>
+        </fileSet>
+        
+        <fileSet>
+            <directory>target/${package}-${package.version}/WEB-INF/classes</directory>
+            <outputDirectory>/env</outputDirectory>
+            <fileMode>0755</fileMode>
+            <includes>
+              <include>*.properties</include>
+              <include>banner.txt</include>
+            </includes>
+        </fileSet>
+       
+    </fileSets>
+    
+     <files>
+		<file>
+			<source>target/${package}-${package.version}.war</source>
+			<outputDirectory>/</outputDirectory>
+			<destName>${package}-${package.version}.war</destName>
+			<fileMode>0755</fileMode>
+		</file>
+	 </files>
+    
+    
+     <!-- <files>
+		<file>
+			<source>target/${package}-${package.version}.image</source>
+			<outputDirectory>/</outputDirectory>
+			<destName>${package}-${package.version}.img.tar</destName>
+			<fileMode>0755</fileMode>
+		</file>
+	 </files> -->
+    
+    
+   
+</assembly>

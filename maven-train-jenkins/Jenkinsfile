@@ -1,0 +1,46 @@
+//checkout from gitlab project
+node {
+
+    //env setting below
+
+    env.PATH = "/var/jenkins_home/k8s:/var/jenkins_home/docker:/usr/bin:/bin:/var/jenkins_home/jdk1.8.0_101/bin:/var/jenkins_home/node/bin:/var/jenkins_home/maven/bin:/var/jenkins_home/groovy/bin:${env.PATH}"
+    env.M2_HOME = "/var/jenkins_home/maven"
+	env.DOCKER_HOST = "tcp://10.186.25.91:9999"
+	env.http_proxy = "http://10.186.25.90:31129"
+	//env.no_proxy = "10.186.25.91,10.*.*.*,10.193.14.115,10.193.14.116,10.186.25.87"
+
+
+    //checkout from gitlab project
+    stage('checkout') {
+        checkout scm
+    }
+
+    env.http_proxy = "http://10.186.132.127:31130"
+    env.no_proxy = "10.186.25.91,10.*.*.*,10.193.14.115,10.193.14.116,10.186.25.87"
+
+
+    //stage is build setp
+
+    stage('check tools') {
+        sh "git config --global http.proxy http://10.186.25.90:31129" //reset 10.191.16.69 fxproxy
+    }
+
+    stage('clean') {
+        sh "mvn clean"
+    }
+
+
+     stage('packaging') {
+         sh "mvn package -Pprod,zipkin,prometheus,IDE,graphite -DskipTests "
+     }
+
+    stage('Build&Push Docker Image') {
+        sh "mvn docker:build"
+        sh "mvn docker:push"
+    }
+
+    stage('Kubernetes RollingUpdate') {
+        sh "echo #############triger kubernetes update application #############"
+        sh "kubectl --server=10.186.25.87:8080 set image deployment/backupservice backupservice=10.186.25.87:5000/backup-automation-service:v1.7.1"
+    }
+}
