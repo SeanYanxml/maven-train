@@ -115,6 +115,17 @@ mvn docker:push
 
 Eclipse 自带 / Maven / Fat jar / One Jar
 
+### 私有镜像配置
+
+```
+    <mirror>
+      <id>CPICmaven</id>
+      <name>cpic mvn</name>
+      <url>http://10.186.25.87:31888/repository/maven-public/</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+```
+
 ### Reference
 
 [1]. [Maven的几个常用plugin](https://www.cnblogs.com/zhangxh20/p/6298062.html)

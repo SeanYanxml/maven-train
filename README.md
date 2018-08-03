@@ -22,6 +22,7 @@ For maven test.
 
 https://mvnrepository.com/
 http://maven.apache.org/
+http://search.maven.org/
 
 * plugins
 
@@ -37,6 +38,10 @@ http://maven.apache.org/plugins/index.html
 * maven-train-jenkins(maven与jenkins聚合使用 CI)
 
 ### Reference
+
+* maven-docker
+
+[1]. [maven构建docker镜像三部曲之一：准备环境](https://blog.csdn.net/boling_cavalry/article/details/78869466)
 
 * train
 
