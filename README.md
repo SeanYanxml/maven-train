@@ -16,17 +16,22 @@ For maven test.
 * maven profile 插件的管理
 * maven 私有仓库的安装
 
+---
 ### URLS
 
 * offical
 
 https://mvnrepository.com/
+
 http://maven.apache.org/
+
 http://search.maven.org/
 
 * plugins
 
 http://maven.apache.org/plugins/index.html
+
+---
 
 ### Demos
 
@@ -37,6 +42,8 @@ http://maven.apache.org/plugins/index.html
 * maven-train-package(maven 打包与打包插件)
 * maven-train-jenkins(maven与jenkins聚合使用 CI)
 
+---
+
 ### Reference
 
 * maven-docker
@@ -46,18 +53,26 @@ http://maven.apache.org/plugins/index.html
 * train
 
 [1]. [Maven学习总结(一)——Maven入门](http://www.cnblogs.com/xdp-gacl/p/3498271.html)
-[2]. [ Maven学习 (一) 搭建Maven环境 ](http://www.cnblogs.com/quanyongan/archive/
-2013/04/17/3025971.html)
+
+[2]. [ Maven学习 (一) 搭建Maven环境 ](http://www.cnblogs.com/quanyongan/archive/2013/04/17/3025971.html)
+
 [3]. [Maven实战（六）--- dependencies与dependencyManagement的区别](https://blog.csdn.net/liutengteng130/article/details/46991829)
+
 [4]. [ Maven简介（三）——profile介绍 ](http://elim.iteye.com/blog/1900568)
 
 * plugins
+
 [1]. [Maven的几个常用plugin](https://www.cnblogs.com/zhangxh20/p/6298062.html)
-[1]. [maven常用插件: 打包源码 / 跳过测试 / 单独打包依赖项](http://www.cnblogs.com/yjmyzz/p/4034502.html)
-[2]. [maven关于打包的那些插件](https://zhaoyanblog.com/archives/674.html)
-[3]. [Java技术--maven的assembly插件打包（依赖包归档](http://www.cnblogs.com/taxuegongzi/p/4226569.html)
-[4]. [使用maven插件对java工程进行打包](http://chenzhou123520.iteye.com/blog/1706242)
-[5]. [Offical Maven Plugin Doc](http://maven.apache.org/plugins/index.html)
+
+[2]. [maven常用插件: 打包源码 / 跳过测试 / 单独打包依赖项](http://www.cnblogs.com/yjmyzz/p/4034502.html)
+
+[3]. [maven关于打包的那些插件](https://zhaoyanblog.com/archives/674.html)
+
+[4]. [Java技术--maven的assembly插件打包（依赖包归档](http://www.cnblogs.com/taxuegongzi/p/4226569.html)
+
+[5]. [使用maven插件对java工程进行打包](http://chenzhou123520.iteye.com/blog/1706242)
+
+[6]. [Offical Maven Plugin Doc](http://maven.apache.org/plugins/index.html)
 
 * 生命周期
 
