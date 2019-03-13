@@ -9,7 +9,7 @@ public class StringUtil {
 		if(StringUtils.isEmpty(blank)){
 			flag = true;
 		}
-		return false;
+		return flag;
 	}
 
 }

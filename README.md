@@ -2,6 +2,30 @@
 
 For maven test.
 
+### 前言
+Maven是一个用于包管理、发布部署的一个工具. 相同的类型的工具还有`Ant`,`Gradle`.
+
+本教程内所涉及的资源都可以在此项目内找到:https://github.com/SeanYanxml/maven-train
+
+PS: 记得我解除的第一个任务就是打包,曾经对于发现`Jar In Jar`的方式研究了一整个晚上. 正是基于Maven的理解,之后,项目内部署包以及后面的脚本都是交与我来完成.
+
+为了和我遇到一样困惑和问题的同伴们, 近期将其整理出来, 以飨读者.
+
+---
+### 正文
+本教程内主要包括如下几个部分:
+
+[1] [Maven 安装和配置](https://yanxml.blog.csdn.net/article/details/88425557)
+[2] [Eclipse Maven插件&Tomcat插件](https://yanxml.blog.csdn.net/article/details/88421382)
+[3] [Maven 基本使用与远端仓库配置](https://yanxml.blog.csdn.net/article/details/88426367)
+[4] [Maven的聚合和依赖](https://yanxml.blog.csdn.net/article/details/88428101)
+[5] [Maven 基础命令与生命周期](https://yanxml.blog.csdn.net/article/details/88428868)
+[6] [Maven 常见插件](https://yanxml.blog.csdn.net/article/details/88530783)
+[7] [Maven 打包实战](https://yanxml.blog.csdn.net/article/details/88539238)
+[8] [Maven 解决依赖Jar包冲突](https://yanxml.blog.csdn.net/article/details/79562288)
+
+### 知识点
+
 * maven 安装与本地仓库配置
 * maven eclipse 插件的配置
 * maven eclipse simple项目的创建和使用
@@ -17,7 +41,7 @@ For maven test.
 * maven 私有仓库的安装
 
 ---
-### URLS
+### offical
 
 * offical
 

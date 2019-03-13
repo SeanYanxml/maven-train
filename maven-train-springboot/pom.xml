@@ -82,7 +82,6 @@
 					<finalName>${package}-${package.version}</finalName>
 					<ignorePermissions>true</ignorePermissions>
 					<appendAssemblyId>false</appendAssemblyId>
-					
 					<descriptors>
 						<descriptor>src/main/assembly/${package.format}-assembly.xml</descriptor>
 					</descriptors>

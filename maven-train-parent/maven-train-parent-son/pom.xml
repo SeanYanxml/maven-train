@@ -1,19 +1,71 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.yanxml</groupId>
-    <artifactId>maven-train-parent</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>maven-train-parent-son</artifactId>
-  
-  <dependencies>
-  	<!-- dependency -->
-  	<dependency>
-  		<groupId>com.yanxml</groupId>
-  		<artifactId>maven-train-parent-util</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  	
-  </dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.yanxml</groupId>
+		<artifactId>maven-train-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>maven-train-parent-son</artifactId>
+
+	<dependencies>
+		<!-- dependency -->
+		<dependency>
+			<groupId>com.yanxml</groupId>
+			<artifactId>maven-train-parent-util</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- all in one jar -->
+			<!-- <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.4.3</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<manifestEntries>
+										<Main-Class>com.yanxml.parent.son.HelloMain</Main-Class>
+										<X-Compile-Source-JDK>1.7</X-Compile-Source-JDK>
+										<X-Compile-Target-JDK>1.7</X-Compile-Target-JDK>
+									</manifestEntries>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin> -->
+
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-dependency-plugin</artifactId>
+		<version>2.10</version>
+		<executions>
+			<execution>
+				<id>copy-dependencies</id>
+				<phase>package</phase>
+				<goals>
+					<goal>copy-dependencies</goal>
+				</goals>
+				<configuration>
+					<outputDirectory>./lib</outputDirectory>
+				</configuration>
+			</execution>
+		</executions>
+	</plugin>
+			
+			
+		</plugins>
+	</build>
 </project>
